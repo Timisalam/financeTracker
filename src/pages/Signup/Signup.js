@@ -19,7 +19,7 @@ export default function Signup() {
         <form onSubmit={handleSubmit} className={styles['signup-form']}>
             <h2>Sign up</h2>
             <label>
-                <span>Display displayName</span>
+                <span>UserName</span>
                 <input
                     type='text'
                     onChange={(e) => setdisplayName(e.target.value)}

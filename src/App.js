@@ -5,13 +5,17 @@ import Login from './pages/Login/Login'
 import Signup from './pages/Signup/Signup'
 import Navbar from './Components/Navbar'
 import { useAuthContext } from './hooks/useAuthContext';
+import { useThemeContext } from './hooks/useThemeContext';
+import ThemeSelector from './Components/ThemeSelector';
 function App() {
   const { authIsReady, user } = useAuthContext()
+  const {mode} = useThemeContext()
   return (
-    <div className="App">
+    <div className= { `App ${mode}`}>
       {authIsReady && (
         <BrowserRouter>
           <Navbar />
+          <ThemeSelector/>
           <Switch>
             <Route path='/Home'>
               {!user && <Redirect to='/login' />}
@@ -23,7 +27,7 @@ function App() {
             </Route >
             <Route path='/Signup'>
               {user && <Redirect to = '/Home'/>}
-              {user && <Signup />}
+              {!user && <Signup />}
             </Route>
           </Switch>
         </BrowserRouter>
